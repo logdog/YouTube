@@ -7,4 +7,9 @@ Learn how to model, simulate, and animate a simple pendulum in Python. Both Jupy
 - [Simulate and Animate Pendulum with Python](https://youtu.be/WNJJuSWfuTY)
 
 ## What You'll Make
-![](simple_pendulum.gif)
+<p align="center">
+  <img src="simple_pendulum.gif" />
+</p>
+
+
+
