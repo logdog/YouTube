@@ -1,0 +1,1 @@
+![](phase_diagram_with_friction)
