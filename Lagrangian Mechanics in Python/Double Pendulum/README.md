@@ -54,6 +54,11 @@ $$\frac{d}{dt}\bigg( \frac{\partial L}{\partial \dot{\theta}_2} \bigg) - \frac{\
 #### Equations of Motion
 See code. Expressions are too long to fit onto the screen!
 
+## Diagram
+<p align="center">
+  <img src="diagram_for_README" />
+</p>
+
 ## Description of Symbols
 | Symbols  | Description | Unit |
 | ------------- | ------------- | ------------- |
