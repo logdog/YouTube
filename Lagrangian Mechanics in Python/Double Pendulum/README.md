@@ -56,7 +56,7 @@ See code. Expressions are too long to fit onto the screen!
 
 ## Diagram
 <p align="center">
-  <img src="diagram_for_README" />
+  <img src="diagram_for_README.png" />
 </p>
 
 ## Description of Symbols
