@@ -9,7 +9,7 @@ Learn how to model, simulate, and animate the simple and compound double pendulu
 
 
 #### Position of Center of Mass (CoM)
-For the simple pendulum, the masses are concentrated to a single point at the end of the rod.
+For the simple pendulum, the masses are concentrated to a single point at the end of the rod. In the video, I used 2D homogeneous transformations $`T_{sa} \in SE(2)`$ to express the locations of the points. For clarity, I provided the expressions explicitly. Both give the same result.
 
 $`p_1 = \begin{bmatrix} L_1 \sin \theta_1\\ -L_1 \cos \theta_1 \end{bmatrix} = \begin{bmatrix} p_{1,x} \\ p_{1,y} \end{bmatrix}`$
 
