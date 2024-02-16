@@ -14,8 +14,9 @@ def double_compound_pend_ODE(t, y):
     theta2_dot = y[3]
 
     # see derivation.ipynb for details
-    theta1_ddot = (-54.0*g*np.sin(theta1) - 6.0*g*np.sin(theta1 + theta2) + 18.0*g*np.sin(theta1 + 2*theta2) + 18.0*theta1_dot**2*np.sin(theta2) + 18.0*theta1_dot**2*np.sin(2*theta2) + 48.0*theta1_dot*theta2_dot*np.sin(theta2) + 24.0*theta2_dot**2*np.sin(theta2))/(-36.0*np.cos(theta2)**2 + 12.0*np.cos(theta2) + 67.0)
-    theta2_ddot = (36.0*g*np.sin(theta1) + 54.0*g*np.sin(theta1 - theta2) - 42.0*g*np.sin(theta1 + theta2) - 18.0*g*np.sin(theta1 + 2*theta2) - 114.0*theta1_dot**2*np.sin(theta2) - 36.0*theta1_dot**2*np.sin(2*theta2) - 36.0*theta1_dot*theta2_dot*np.sin(theta2) - 36.0*theta1_dot*theta2_dot*np.sin(2*theta2) - 18.0*theta2_dot**2*np.sin(theta2) - 18.0*theta2_dot**2*np.sin(2*theta2))/(-36.0*np.cos(theta2)**2 + 12.0*np.cos(theta2) + 67.0)
+    # edit 2/15/24: fixed theta1_ddot and theta2_ddot
+    theta1_ddot = (13.5*g*np.sin(theta1) - 4.5*g*np.sin(theta1 + 2*theta2) - 6.0*theta1_dot**2*np.sin(theta2) - 4.5*theta1_dot**2*np.sin(2*theta2) - 12.0*theta1_dot*theta2_dot*np.sin(theta2) - 6.0*theta2_dot**2*np.sin(theta2))/(9.0*np.cos(theta2)**2 - 16.0)
+    theta2_ddot = (-13.5*g*np.sin(theta1) - 13.5*g*np.sin(theta1 - theta2) + 10.5*g*np.sin(theta1 + theta2) + 4.5*g*np.sin(theta1 + 2*theta2) + 30.0*theta1_dot**2*np.sin(theta2) + 9.0*theta1_dot**2*np.sin(2*theta2) + 12.0*theta1_dot*theta2_dot*np.sin(theta2) + 9.0*theta1_dot*theta2_dot*np.sin(2*theta2) + 6.0*theta2_dot**2*np.sin(theta2) + 4.5*theta2_dot**2*np.sin(2*theta2))/(9.0*np.cos(theta2)**2 - 16.0)
 
     return (
         theta1_dot,
@@ -103,10 +104,9 @@ theta1_data = sol.y[0]
 theta2_data = sol.y[2]
 t_data = sol.t
 
+# edit: 2/15/24: removed black background to match simple_animate.ipynb
 fig = plt.figure()
 ax = fig.add_subplot(aspect='equal')
-ax.figure.set_facecolor('k')
-ax.figure.set_edgecolor('k')
 ax.set_xlim(-2.25, 2.25)
 ax.set_ylim(-2.25, 2.25)
 ax.set_yticks([])

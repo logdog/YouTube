@@ -42,7 +42,8 @@ v1 = np.array([diff(p1[0],t), diff(p1[1],t)])
 v2 = np.array([diff(p2[0],t), diff(p2[1],t)])
 
 # total kinetic energy
-T = 0.5*m1*(v1.T @ v1) + 0.5*m2*(v2.T @ v2) + 0.5*I1*theta1_dot**2 + 0.5*I2*theta2_dot**2
+# edit 2/15/24: fixed replaced 0.5*I2*theta2_dot**2 with 0.5*I2*(theta1_dot + theta2_dot)**2
+T = 0.5*m1*(v1.T @ v1) + 0.5*m2*(v2.T @ v2) + 0.5*I1*theta1_dot**2 + 0.5*I2*(theta1_dot + theta2_dot)**2
 
 # total potential energy
 V = m1*g*p1[1] + m2*g*p2[1]
