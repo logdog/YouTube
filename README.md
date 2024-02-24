@@ -32,11 +32,9 @@ The best way to learn anything is do jump into it and create. You don't need to 
 Pick a small project that excites you: the simpler, the better. For graphics, use print statements in your terminal. Print out a Christmas tree using \* characters in your terminal, or make a simple hangman game. With every project you complete, your confidence and ability to read documentation will grow. I particularly like making games, as they are really fun to make and will test your abilities as a programmer. 
 
 # Installation Guide (Windows 10/11)
-1. Install latest version of [Python](https://www.python.org/downloads/). Verify proper install by opening a new terminal and running `python -v`.
+1. Install latest version of [Python](https://www.python.org/downloads/). Select checkboxes "Use admin privileges" and "Add python to PATH" if possible. Verify proper install by opening a new terminal and running `python -v`.
    
-2. Install [git for windows](https://git-scm.com/download/win). Verify proper install by opening a new terminal and running `git -v`.
-  
-3. Install [FFMPEG](https://ffmpeg.org/download.html) (this is for creating MP4 and GIF files). I recommend using [Chocolately](https://chocolatey.org/install) to do this process. In a powershell window, install Chocolately with
+2. Install [FFMPEG](https://ffmpeg.org/download.html) (this is for creating MP4 and GIF files). I recommend using [Chocolately](https://chocolatey.org/install) to do this process. In a powershell window, install Chocolately with
 ```
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
@@ -46,7 +44,9 @@ choco install ffmpeg
 ```
 You may need to answer some questions by typing `y` or `a` in order to finish the installation process. Verify proper install by opening new terminal and running `ffmpeg` and checking the program runs.
 
-4. Install [VSCode](https://code.visualstudio.com/download). I recommend checking the optional boxes in the installation to allow VSCode to appear in the file explorer, and also allowing VSCode to add to Path.
+3. Install [VSCode](https://code.visualstudio.com/download). I recommend checking the optional "Open with Code" boxes in the installation on page 5.
+
+4. Install [git for windows](https://git-scm.com/download/win). I recommend changing the default editor to Visual Studio Code in the installatoin on page 5. Verify proper install by opening a new terminal and running `git -v`.
    
 5. Copy the code in this repository. In the command line, navigate to suitable location. Then run
 ```
@@ -60,16 +60,23 @@ The folder YouTube will have been created. Type `cd YouTube` to change directory
    
 8. Create a Python virtual environment. Type `Ctrl+Shift+P` and then type `Python: Create Environment`. Select `.venv` and then select the desired version of Python.
     
-9. Source the virtual environment. Open a new command prompt (press `` Ctrl+` `` to open terminal and type `cmd` to open a command prompt). Then type `.venv\Scripts\activate`. The command prompt should be prefixed by `(.venv)`, and when you run `python -c "import sys; print(sys.prefix)"` the printed path should end in `.venv`
+9. Source the virtual environment. Open a new command prompt (press `` Ctrl+` `` to open terminal and type `cmd` to open a command prompt). Then type `.venv\Scripts\activate`. When you run
+```
+python -c "import sys; print(sys.prefix)"
+```
+the printed path should end in `.venv`
 
 10. `pip` install all Python modules. Here are a few which are needed, but feel free to install whatever you'd like.
 ```
 pip install numpy scipy matplotlib moviepy
 ```
 
-11. Open Jupyter Notebook file in VSCode. For example, open `Lagrangian Mechanics in Python/Simple Pendulum/animate_simple_pendulum.ipynb`. Select In the top right corner, be sure to select the `.venv` kernel. A popup may appear asking you to install ipykernel package. Hit Install and wait a few moments for this install to finish.
+11. Open Jupyter Notebook file in VSCode. For example, open `Lagrangian Mechanics in Python/Elastic Pendulum/animate.ipynb`. Select In the top right corner, be sure to select the `.venv` kernel.
 
-12. Run the notebook. Click the "Run All" button in the top left corner. The entire script should run and produce `.mp4` files when complete.
+12. Run the notebook. A popup may appear asking you to install ipykernel package. Hit Install and wait a few moments for this install to finish. Then, run the notebook again by clicking the "Run All" button in the top left corner. The entire script should run and produce `.mp4` files when complete. Change the initial conditions for yourself to experiment and play around! For example, 
+```
+x0 = np.array([np.deg2rad(-30), 0, 0.25, 0])
+```
 
 ## Issues:
 If you find any issues with this code base, don't hesitate to bring them to my attention! Please open a new issue on this Github repository so we can address the problem.
