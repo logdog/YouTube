@@ -67,7 +67,7 @@ The folder YouTube will have been created. Type `cd YouTube` to change directory
 pip install numpy scipy matplotlib moviepy
 ```
 
-11. Open Jupyter Notebook file in VSCode. For example, open `Simple Pendulum/animate_simple_pendulum.ipynb`. Select In the top right corner, be sure to select the `.venv` kernel. A popup may appear asking you to install ipykernal package. Hit Install and wait a few moments for this install to finish.
+11. Open Jupyter Notebook file in VSCode. For example, open `Lagrangian Mechanics in Python/Simple Pendulum/animate_simple_pendulum.ipynb`. Select In the top right corner, be sure to select the `.venv` kernel. A popup may appear asking you to install ipykernel package. Hit Install and wait a few moments for this install to finish.
 
 12. Run the notebook. Click the "Run All" button in the top left corner. The entire script should run and produce `.mp4` files when complete.
 
