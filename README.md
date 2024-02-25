@@ -32,6 +32,7 @@ The best way to learn anything is do jump into it and create. You don't need to 
 Pick a small project that excites you: the simpler, the better. For graphics, use print statements in your terminal. Print out a Christmas tree using \* characters in your terminal, or make a simple hangman game. With every project you complete, your confidence and ability to read documentation will grow. I particularly like making games, as they are really fun to make and will test your abilities as a programmer. 
 
 # Installation Guide (Windows 10/11)
+Follow the instructions below, or [watch me do it on a fresh windows 11 computer here.](https://youtu.be/5gxoo8Cogac)
 1. Install latest version of [Python](https://www.python.org/downloads/). Select checkboxes "Use admin privileges" and "Add python to PATH" if possible. Verify proper install by opening a new terminal and running `python -v`.
    
 2. Install [FFMPEG](https://ffmpeg.org/download.html) (this is for creating MP4 and GIF files). I recommend using [Chocolately](https://chocolatey.org/install) to do this process. In a powershell window, install Chocolately with
