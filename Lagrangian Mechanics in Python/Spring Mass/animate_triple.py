@@ -18,14 +18,18 @@ b = 0.25
 x0 = -1
 x_dot0 = 0
 
+# set the simulation time and frames per second
+t_final = 10
+fps = 30
+
 # our system of differential equations
 # y[0]=x, y[1]=x_dot
 def spring_mass_ODE(t, y): 
     return (y[1], g - k*y[0]/m - b*y[1]/m)
 
 # solve the ODE, evaluate at 30 fps
-sol = solve_ivp(spring_mass_ODE, [0, 10], (x0, x_dot0), 
-    t_eval=np.linspace(0,10,10*30))
+sol = solve_ivp(spring_mass_ODE, [0, t_final], (x0, x_dot0), 
+    t_eval=np.linspace(0,t_final,t_final*fps+1))
 
 # output of the solver
 x, x_dot = sol.y
@@ -92,7 +96,7 @@ def animate(i):
     x_dot_curve.set_data(t[:i+1], x_dot[:i+1])
 
     phase_curve.set_data(x[:i+1], x_dot[:i+1])
-    phase_dot.set_data(x[i], x_dot[i])
+    phase_dot.set_data([x[i]], [x_dot[i]])
 
     y = -(ell + x[i])
     circle.set_center((0, y))
@@ -112,5 +116,5 @@ def animate(i):
 
 # save a video: 30 fps
 ani = animation.FuncAnimation(fig, animate, frames=len(t))
-ffmpeg_writer = animation.FFMpegWriter(fps=30)
+ffmpeg_writer = animation.FFMpegWriter(fps=fps)
 ani.save('all.gif', writer=ffmpeg_writer)

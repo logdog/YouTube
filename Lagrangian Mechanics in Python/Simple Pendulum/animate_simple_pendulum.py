@@ -16,14 +16,18 @@ ell = 1
 theta0 = np.deg2rad(30)
 theta_dot0 = 0
 
+# set the simulation time and frames per second
+t_final = 5
+fps = 30
+
 # our system of differential equations
 # y[0] is theta, y[1] is theta_dot
 def pendulum_ODE(t, y): 
     return (y[1], -g*np.sin(y[0])/ell)
 
 # solve the ODE, 30 fps
-sol = solve_ivp(pendulum_ODE, [0, 5], (theta0, theta_dot0), 
-    t_eval=np.linspace(0,5,30*5))
+sol = solve_ivp(pendulum_ODE, [0, t_final], (theta0, theta_dot0), 
+    t_eval=np.linspace(0,t_final,t_final*fps+1))
 
 # output of the solver
 theta, theta_dot = sol.y
@@ -67,7 +71,7 @@ theta_curve, = ax.plot(t[0], theta_deg[0], 'r')
 theta_dot_curve, = ax.plot(t[0], theta_dot_deg[0], 'b')
 
 ax.set_title('Simple Pendulum: Angular Position, Velocity vs Time')
-ax.set_xlim(0, 5)
+ax.set_xlim(0, t_final)
 ax.set_ylim(-100, 100)
 ax.set_xlabel('Time (seconds)')
 ax.set_ylabel(r'$\theta$ (deg), $\dot \theta$ (deg/s)')
@@ -79,9 +83,11 @@ def animate(i):
     theta_dot_curve.set_data(t[:i+1], theta_dot_deg[:i+1])
 
 # save video @ 30 fps
-ani = animation.FuncAnimation(fig, animate, frames=len(t))
-ffmpeg_writer = animation.FFMpegWriter(fps=30)
-ani.save('time_domain.mp4', writer=ffmpeg_writer)
+anim = animation.FuncAnimation(fig, animate, frames=len(t))
+ffmpeg_writer = animation.FFMpegWriter(fps=fps)
+anim.save('time_domain.mp4', writer=ffmpeg_writer)
+# you need to make sure the ffmpeg is installed on your machine and 
+# the path is configured correctly. see Troubleshooting for details
 
 # %%
 # create a phase diagram of theta, theta_dot
@@ -108,12 +114,11 @@ ax.grid()
 
 def animate(i):
     phase_curve.set_data(theta_deg[:i+1], theta_dot_deg[:i+1])
-    phase_dot.set_data(theta_deg[i], theta_dot_deg[i])
+    phase_dot.set_data([theta_deg[i]], [theta_dot_deg[i]])
 
 ani = animation.FuncAnimation(fig, animate, frames=len(t))
-ffmpeg_writer = animation.FFMpegWriter(fps=30)
+ffmpeg_writer = animation.FFMpegWriter(fps=fps)
 ani.save('phase_diagram.mp4', writer=ffmpeg_writer)
-
 
 # %%
 # create an animation of the pendulum swining with Matplotlib
@@ -139,7 +144,7 @@ def animate(i):
 
 # save a video: 30 fps
 ani = animation.FuncAnimation(fig, animate, frames=len(t))
-ffmpeg_writer = animation.FFMpegWriter(fps=30)
+ffmpeg_writer = animation.FFMpegWriter(fps=fps)
 ani.save('pend.mp4', writer=ffmpeg_writer)
 
 # %%
@@ -149,7 +154,7 @@ gs = gridspec.GridSpec(2,2, width_ratios=[1,2], height_ratios=[1,1])
 
 # theta, theta_dot vs time
 ax0 = fig.add_subplot(gs[0,0])
-ax0.set_xlim(0, 5)
+ax0.set_xlim(0, t_final)
 ax0.set_ylim(-100, 100)
 ax0.set_ylabel(r'$\theta$ (deg), $\dot \theta$ (deg/s)')
 ax0.legend([r'$\theta$', r'$\dot \theta$'])
@@ -196,7 +201,7 @@ def animate(i):
 
 # save a video: 30 fps
 ani = animation.FuncAnimation(fig, animate, frames=len(t))
-ffmpeg_writer = animation.FFMpegWriter(fps=30)
+ffmpeg_writer = animation.FFMpegWriter(fps=fps)
 ani.save('all.mp4', writer=ffmpeg_writer)
 
 
